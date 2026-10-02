@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block c %}<div class="icon">{{ icon }}</div><h1>{{ title }}</h1><p>{{ sub }}</p>
+{% if title=='Animals' %}<a class="btn" href="/admin-add-animal">+ Add Animal</a>{% endif %}
+<div class="tw"><table><tr>{% for c in cols %}<th>{{c}}</th>{% endfor %}{% if upd %}<th>Update</th>{% endif %}{% if edit %}<th>Action</th>{% endif %}</tr>
+{% for r in rows %}<tr>{% for c in r %}<td>{% if loop.index0==sidx %}<span class="b {{c}}">{{c}}</span>{% else %}{{ c if c is not none else '—' }}{% endif %}</td>{% endfor %}
+{% if upd %}<td><form method="post" action="{{upd[0]}}"><input type="hidden" name="id" value="{{r[0]}}"><select name="status">{% for o in upd[1] %}<option {{'selected' if o==r[sidx]}}>{{o}}</option>{% endfor %}</select><button>Update</button></form></td>{% endif %}
+{% if edit %}<td><a class="btn o" href="/admin-edit-animal/{{r[0]}}">Edit</a> <a class="btn r" href="/admin-delete-animal/{{r[0]}}" onclick="return confirm('Delete?')">Delete</a></td>{% endif %}</tr>
+{% else %}<tr><td colspan="9">No records yet.</td></tr>{% endfor %}</table></div>{% endblock %}

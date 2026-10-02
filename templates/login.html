@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block c %}<div class="card box"><div class="icon">{{ {'citizen':'🧑','ngo':'🏢','admin':'🛡️'}[role] }}</div>
+<h2>{{ role|capitalize }} Login</h2><form method="post"><label>Email</label><input name="email" type="email" required>
+<label>Password</label><input name="password" type="password" required><button>Login</button></form>
+<p>{% if role=='citizen' %}No account? <a href="/register">Register here</a>{% else %}Are you a citizen? <a href="/login/citizen">Login</a>{% endif %}</p></div>{% endblock %}

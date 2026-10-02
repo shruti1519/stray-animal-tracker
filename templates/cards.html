@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block c %}<h1>Animals Needing a Home 🐶</h1><p>Request to adopt an animal.</p>
+<div class="grid">{% for a in animals %}<div class="card"><h3>{{a.name}}</h3><p><b>Type:</b> {{a.species}}<br><b>Location:</b> {{a.location}}<br><b>Health:</b> {{a.health}}<br><b>NGO:</b> {{a.ngo}}<br><span class="b {{a.status}}">{{a.status}}</span></p>
+{% if a.status=='Available' %}<form method="post" action="/adopt/{{a.id}}"><button>Adopt</button></form>{% endif %}</div>{% endfor %}</div>{% endblock %}

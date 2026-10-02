@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title or 'Stray Animal Tracker' }}</title>
+<style>
+:root{--p:#0d6efd}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7ff;color:#1b2a41;min-height:100vh;display:flex;flex-direction:column}
+nav{background:var(--p);color:#fff;padding:14px 8%;display:flex;justify-content:space-between;align-items:center}
+nav a{background:#fff;color:#111;padding:7px 14px;border-radius:6px;text-decoration:none;margin-left:8px;font-size:14px}
+main{flex:1;padding:30px 8%;text-align:center}footer{background:var(--p);color:#fff;text-align:center;padding:12px;font-size:13px}
+.flash{background:#fff3cd;padding:10px;text-align:center}
+.card{background:#fff;border-radius:12px;box-shadow:0 2px 8px #0002;padding:22px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:25px auto;max-width:1000px}
+.btn,button{background:var(--p);color:#fff;border:0;padding:9px 18px;border-radius:6px;cursor:pointer;text-decoration:none;font-size:14px;display:inline-block}
+.btn.o{background:#fff;color:var(--p);border:1px solid var(--p)}.btn.r{background:#fff;color:#c0392b;border:1px solid #c0392b}
+.box{max-width:420px;margin:30px auto;text-align:left}.box h2,.box p{text-align:center}
+label{font-size:13px;font-weight:bold;display:block;margin:12px 0 4px}input,select,textarea{width:100%;padding:9px;border:1px solid #ddd;border-radius:6px}
+.box button{width:100%;margin-top:18px}.icon{font-size:42px;text-align:center}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:14px}th{background:#cfe2ff}
+th,td{padding:10px;text-align:left;border-bottom:1px solid #eee}.tw{overflow-x:auto;box-shadow:0 2px 8px #0002;border-radius:10px;margin-top:20px}
+.b{padding:3px 9px;border-radius:5px;color:#fff;font-size:12px;background:#0d6efd}.Pending{background:#f0ad00}.Rescued,.Approved,.Adopted,.Available{background:#198754}.Rejected,.Closed{background:#6c757d}
+td form{display:flex;gap:6px}td select{padding:5px;width:auto}td button{padding:5px 10px}
+</style></head><body>
+<nav><b>🐾 Stray Animal Tracker</b><span>{% if session.role %}<a href="/{{session.role}}-dashboard">Dashboard</a><a href="/logout">Logout</a>{% else %}<a href="/">Home</a>{% endif %}</span></nav>
+{% for m in get_flashed_messages() %}<div class="flash">{{ m }}</div>{% endfor %}
+<main>{% block c %}{% endblock %}</main><footer>© 2026 Stray Animal Tracker</footer></body></html>

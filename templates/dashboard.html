@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block c %}<h1>{{ title }}</h1><p>{{ sub }}</p>
+<div class="grid">{% for i,t,d,u in cards %}<a href="{{u}}" style="text-decoration:none;color:inherit"><div class="card"><div class="icon">{{i}}</div><h3>{{t}}</h3><p>{{d}}</p></div></a>{% endfor %}</div>{% endblock %}
